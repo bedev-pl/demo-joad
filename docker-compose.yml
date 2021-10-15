@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+    joad_db:
+        image: mysql:8
+        environment:
+            - MYSQL_RANDOM_ROOT_PASSWORD=true
+            - MYSQL_DATABASE=joad_db
+            - MYSQL_USER=admin
+            - MYSQL_PASSWORD=admin
+            - TZ=Europe/Warsaw
+    joad_web:
+        build: .
+        ports:
+            -   '8080:80'
+        volumes:
+            -   .:/var/www
+            - ./docker/xdebug.ini:/usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
+            - ./docker/error_reporting.ini:/usr/local/etc/php/conf.d/error_reporting.ini
