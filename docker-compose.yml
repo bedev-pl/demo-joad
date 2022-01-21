@@ -1,15 +1,17 @@
 version: '3.8'
 
 services:
-    joad_db:
+    joa_db:
         image: mysql:8
         environment:
             - MYSQL_RANDOM_ROOT_PASSWORD=true
-            - MYSQL_DATABASE=joad_db
+            - MYSQL_DATABASE=joa_db
             - MYSQL_USER=admin
             - MYSQL_PASSWORD=admin
             - TZ=Europe/Warsaw
-    joad_web:
+        ports:
+            - '3306:3306'
+    joa_web:
         build: .
         ports:
             -   '8080:80'

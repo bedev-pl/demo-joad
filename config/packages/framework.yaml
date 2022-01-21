@@ -16,6 +16,12 @@ framework:
     #fragments: true
     php_errors:
         log: true
+    http_client:
+        scoped_clients:
+            justJoin.client:
+                base_uri: 'https://justjoin.it'
+            noFluffJobs.client:
+                base_uri: 'https://nofluffjobs.com'
 
 when@test:
     framework:
